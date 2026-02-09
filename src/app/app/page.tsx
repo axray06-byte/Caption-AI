@@ -153,7 +153,7 @@ export default function App() {
 
             {/* Header Navigation */}
             <header className={styles.header}>
-                <Link href="/" className={styles.logo}>
+                <Link href="/app" className={styles.logo}>
                     <div className={styles.logoIconWrapper}>
                         <Camera size={20} className={styles.logoIcon} />
                     </div>
@@ -173,7 +173,14 @@ export default function App() {
                     </div>
 
                     <div className={styles.userGreeting}>
-                        Hi, <span className={styles.userName}>{user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User'}</span>
+                        <div className={styles.userAvatar}>
+                            {user?.user_metadata?.avatar_url ? (
+                                <img src={user.user_metadata.avatar_url} alt="" className={styles.avatarImg} />
+                            ) : (
+                                <Layout size={14} />
+                            )}
+                        </div>
+                        Hi, <span className={styles.userName}>{user?.user_metadata?.full_name?.split(' ')[0] || user?.email?.split('@')[0] || 'User'}</span>
                     </div>
 
                     <div className={styles.navActions}>
@@ -214,6 +221,13 @@ export default function App() {
             )}
 
             <main className={styles.main}>
+                <header className={styles.mainContentHeader}>
+                    <h1 className={styles.mainTitle}>
+                        {new Date().getHours() < 12 ? 'Good Morning' : new Date().getHours() < 18 ? 'Good Afternoon' : 'Good Evening'}, <span className={styles.highlightName}>{user?.user_metadata?.full_name?.split(' ')[0] || user?.email?.split('@')[0] || 'Creator'}</span> <Sparkles size={24} className={styles.titleIcon} />
+                    </h1>
+                    <p className={styles.mainSubtitle}>What are we creating today?</p>
+                </header>
+
                 <div className={`${styles.dashboardGrid} ${!isConfigExpanded ? styles.dashboardGridCollapsed : ''}`}>
 
                     {/* Left Panel: Config & Upload */}

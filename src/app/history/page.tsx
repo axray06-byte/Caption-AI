@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import Link from 'next/link';
-import { ChevronLeft, Calendar, Layout, MessageSquare, Trash2, ArrowRight } from 'lucide-react';
+import { ChevronLeft, Calendar, Layout, MessageSquare, Trash2, ArrowRight, LayoutDashboard } from 'lucide-react';
 import ResultsDisplay from '@/components/ResultsDisplay';
 import styles from './history.module.css';
 
@@ -103,7 +103,14 @@ export default function HistoryPage() {
                     </div>
 
                     <div className={styles.userGreeting}>
-                        Hi, <span className={styles.userName}>{user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User'}</span>
+                        <div className={styles.userAvatar}>
+                            {user?.user_metadata?.avatar_url ? (
+                                <img src={user.user_metadata.avatar_url} alt="" className={styles.avatarImg} />
+                            ) : (
+                                <LayoutDashboard size={14} />
+                            )}
+                        </div>
+                        Hi, <span className={styles.userName}>{user?.user_metadata?.full_name?.split(' ')[0] || user?.email?.split('@')[0] || 'User'}</span>
                     </div>
                 </div>
             </header>

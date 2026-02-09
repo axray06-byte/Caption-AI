@@ -148,6 +148,21 @@
     }
 }
 
+@media (max-width: 768px) {
+
+    .card,
+    .hashtagsContainer,
+    .insightsContainer {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .captionCard {
+        transition: none !important;
+    }
+}
+
 /* Captions List */
 .captionsList {
     display: flex;
