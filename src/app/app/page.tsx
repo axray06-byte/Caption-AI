@@ -172,6 +172,10 @@ export default function App() {
                         </Link>
                     </div>
 
+                    <div className={styles.userGreeting}>
+                        Hi, <span className={styles.userName}>{user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User'}</span>
+                    </div>
+
                     <div className={styles.navActions}>
                         <button onClick={() => setIsMenuOpen(true)} className={`${styles.iconBtn} ${styles.menuBtn}`} title="Menu">
                             <Menu size={20} />
@@ -187,6 +191,10 @@ export default function App() {
             {isMenuOpen && (
                 <div className={styles.mobileMenu}>
                     <div className={styles.mobileMenuHeader}>
+                        <div className={styles.mobileUserGreeting}>
+                            <span className={styles.mobileWelcome}>Welcome,</span>
+                            <span className={styles.mobileUserName}>{user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User'}</span>
+                        </div>
                         <button onClick={() => setIsMenuOpen(false)} className={styles.iconBtn}>
                             <X size={24} />
                         </button>

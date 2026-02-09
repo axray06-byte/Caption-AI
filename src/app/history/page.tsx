@@ -99,7 +99,11 @@ export default function HistoryPage() {
                         <Link href="/app" className={styles.backBtn}>
                             <ChevronLeft size={16} /> <span className={styles.backText}>Back</span>
                         </Link>
-                        <h1 className={styles.title}>Caption AI</h1>
+                        <h1 className={styles.title}>History</h1>
+                    </div>
+
+                    <div className={styles.userGreeting}>
+                        Hi, <span className={styles.userName}>{user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User'}</span>
                     </div>
                 </div>
             </header>

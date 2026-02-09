@@ -7,6 +7,7 @@ import { ChevronLeft, Trash2, Globe, Save, AlertCircle } from 'lucide-react';
 import styles from './settings.module.css';
 
 export default function SettingsPage() {
+    const [user, setUser] = useState<any>(null);
     const [defaultLanguage, setDefaultLanguage] = useState('English');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState<{ text: string, type: 'success' | 'error' } | null>(null);
@@ -14,8 +15,8 @@ export default function SettingsPage() {
     useEffect(() => {
         const fetchProfile = async () => {
             const { data: { user } } = await supabase.auth.getUser();
+            setUser(user);
             if (user) {
-                // Assuming profiles table exists, otherwise handle gracefully
                 const { data } = await supabase.from('profiles').select('default_language').eq('id', user.id).single();
                 if (data?.default_language) setDefaultLanguage(data.default_language);
             }
@@ -26,7 +27,6 @@ export default function SettingsPage() {
     const saveSettings = async () => {
         setLoading(true);
         setMessage(null);
-        const { data: { user } } = await supabase.auth.getUser();
         if (user) {
             const { error } = await supabase.from('profiles').upsert({
                 id: user.id,
@@ -41,7 +41,6 @@ export default function SettingsPage() {
     const clearHistory = async () => {
         if (!confirm('Are you sure you want to clear ALL history? This action cannot be undone.')) return;
         setLoading(true);
-        const { data: { user } } = await supabase.auth.getUser();
         if (user) {
             const { error } = await supabase.from('generations').delete().eq('user_id', user.id);
             if (error) setMessage({ text: 'Error clearing history', type: 'error' });
@@ -59,9 +58,13 @@ export default function SettingsPage() {
                 <div className={styles.headerContent}>
                     <div className={styles.headerLeft}>
                         <Link href="/app" className={styles.backBtn}>
-                            <ChevronLeft size={16} /> Back
+                            <ChevronLeft size={16} /> <span className={styles.backText}>Back</span>
                         </Link>
                         <h1 className={styles.title}>Settings</h1>
+                    </div>
+
+                    <div className={styles.userGreeting}>
+                        Hi, <span className={styles.userName}>{user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User'}</span>
                     </div>
                 </div>
             </header>

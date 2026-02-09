@@ -35,6 +35,7 @@
 
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  --gradient-secondary: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%);
   --gradient-dark: radial-gradient(circle at center, #1e1b4b 0%, #030712 100%);
 }
 
