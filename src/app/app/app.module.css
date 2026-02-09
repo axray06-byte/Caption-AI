@@ -78,8 +78,9 @@
 
 @media (max-width: 768px) {
     .header {
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(10, 10, 10, 0.98) !important;
     }
 }
 
@@ -639,8 +640,9 @@
 
     .resultsPanel {
         min-height: 600px;
-        background: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(20px);
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
@@ -717,13 +719,21 @@
     align-items: center;
     justify-content: center;
     padding: 3rem;
-    background: rgba(255, 255, 255, 0.01);
+    background: rgba(15, 23, 42, 0.98);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.05);
     margin: 2rem;
     border-radius: 2rem;
     position: relative;
     overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .progressContainer {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        margin: 1rem;
+    }
 }
 
 .progressContainer::after {
