@@ -1,0 +1,332 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to bottom right, var(--card-bg), transparent);
+    padding: 1.5rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1rem;
+}
+
+.iconWrapper {
+    padding: 0.625rem;
+    background-color: rgba(139, 92, 246, 0.1);
+    border-radius: 0.75rem;
+    color: var(--primary);
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--foreground);
+}
+
+.subtitle {
+    font-size: 0.75rem;
+    color: var(--secondary);
+}
+
+.limitBadge {
+    margin-left: auto;
+    padding: 0.375rem 0.75rem;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 99px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.limitBadgeActive {
+    background: rgba(139, 92, 246, 0.2);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+}
+
+.limitBadgeReached {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.formControl {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.labelText {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--secondary);
+    transition: color 0.2s ease;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.formControl:focus-within .labelText {
+    color: var(--primary);
+}
+
+.selectWrapper {
+    position: relative;
+}
+
+.selectInput {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background-color: var(--input-bg);
+    color: var(--foreground);
+    font-size: 1rem;
+    transition: all 0.2s;
+    backdrop-filter: blur(5px);
+    appearance: none;
+    cursor: pointer;
+}
+
+.selectInput option {
+    background-color: #1a1a1a;
+    /* Fallback */
+    background-color: var(--card-bg);
+    color: var(--foreground);
+}
+
+.selectInput:hover {
+    border-color: rgba(139, 92, 246, 0.5);
+}
+
+.selectInput:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-glow);
+}
+
+.chevronIcon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary);
+    pointer-events: none;
+    width: 1rem;
+    height: 1rem;
+    transition: color 0.2s ease;
+}
+
+.formControl:hover .chevronIcon {
+    color: var(--foreground);
+}
+
+.segmentControl {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0.375rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+.segmentButton {
+    flex: 1;
+    padding: 0.625rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: var(--secondary);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.segmentButton:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.segmentButtonActive {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.2);
+    transform: scale(1.02);
+}
+
+.emojiButton {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+    background: transparent;
+}
+
+.emojiButton:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    opacity: 1;
+}
+
+.emojiButtonActive {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+    opacity: 1;
+}
+
+.footer {
+    margin-top: auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.generateBtn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    border-radius: 99px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.generateBtnPrimary {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.generateBtnPrimary:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.4);
+    filter: brightness(1.1);
+}
+
+.generateBtnDisabled {
+    background-color: rgba(148, 163, 184, 0.2);
+    color: var(--secondary);
+    cursor: not-allowed;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.loadingSpinner {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.waitingText {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--secondary);
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    opacity: 0.6;
+}
+
+.pulseDot {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background-color: var(--accent);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.limitInfo {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--secondary);
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    opacity: 0.8;
+}
+
+.limitResetText {
+    font-size: 0.65rem;
+    opacity: 0.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .5;
+    }
+}
